@@ -1,6 +1,6 @@
 import unittest
 
-from main import func
+from main import func, traverse
 
 
 class TestCase(unittest.TestCase):
@@ -15,8 +15,6 @@ class TestCase(unittest.TestCase):
           }
         }
 
-        result = func(input_value)
-
         expected = {
           'I': {
             'deserve': {
@@ -27,6 +25,14 @@ class TestCase(unittest.TestCase):
           }
         }
 
+        result = func(input_value)
+
+        self.assertEqual(result, expected)
+
+    def test_traverse(self):
+        input = {'a': {'b': 'c'}}
+        expected = ['a', 'b', 'c']
+        result = traverse(input)
         self.assertEqual(result, expected)
 
 
