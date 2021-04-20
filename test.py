@@ -37,7 +37,7 @@ class TestCase(unittest.TestCase):
 
     def test_construct(self):
         input = ['a', 'b', 'c']
-        expected = {'a': {'b': 'c'}}
+        expected = {'c': {'b': 'a'}}
         result = construct(input)
         self.assertEqual(result, expected)
 

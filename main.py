@@ -5,7 +5,7 @@ from typing import Optional
 
 def func(input_: dict) -> dict:
     if isinstance(input_, dict):
-        plan = traverse(dict)
+        plan = traverse(input_)
         result = construct(plan)
         return result
     else:
@@ -14,11 +14,11 @@ def func(input_: dict) -> dict:
         pass
 
 
-def traverse(data: dict, pathes: Optional[list] = None) -> list:
+def traverse(data: dict, pathes: Optional[list[str]] = None) -> list[str]:
     if pathes is None:
         pathes = []
 
-    # assume the data is would have the exact structure like the give test data
+    # assume the data would have the exact structure like the give test data
     if isinstance(data, dict):
         pathes += [*data.keys()]
         current_key = pathes[-1]
@@ -29,5 +29,11 @@ def traverse(data: dict, pathes: Optional[list] = None) -> list:
     return pathes
 
 
-def construct(plan: list) -> dict:
-    pass
+def construct(plan: list[str]) -> dict:
+    # should check the type here, but I am too lazy
+    value = plan.pop(0)
+    result = {}
+    for key in plan:
+        result = {key: value}
+        value = result
+    return result
