@@ -1,6 +1,6 @@
 import unittest
 
-from main import func, traverse
+from main import func, traverse, construct
 
 
 class TestCase(unittest.TestCase):
@@ -33,6 +33,12 @@ class TestCase(unittest.TestCase):
         input = {'a': {'b': 'c'}}
         expected = ['a', 'b', 'c']
         result = traverse(input)
+        self.assertEqual(result, expected)
+
+    def test_construct(self):
+        input = ['a', 'b', 'c']
+        expected = {'a': {'b': 'c'}}
+        result = construct(input)
         self.assertEqual(result, expected)
 
 

@@ -5,10 +5,11 @@ from typing import Optional
 
 def func(input_: dict) -> dict:
     if isinstance(input_, dict):
-        result = {}
+        plan = traverse(dict)
+        result = construct(plan)
         return result
     else:
-        # I should throw an exception here, but I am too lazy to come up a name
+        # should throw an exception here, but I am too lazy to come up a name
         # and handle the exception accordingly
         pass
 
@@ -23,5 +24,10 @@ def traverse(data: dict, pathes: Optional[list] = None) -> list:
         current_key = pathes[-1]
         pathes = traverse(data[current_key], pathes)
     else:
+        # should check the type here, but I am too lazy
         pathes += [data]
     return pathes
+
+
+def construct(plan: list) -> dict:
+    pass
